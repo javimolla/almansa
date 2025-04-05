@@ -33,8 +33,8 @@
       renderer="antialias: true; alpha: true"
     > -->
     <a-scene
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true"
-      renderer="antialias: true; alpha: true"
+      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: true"
+      renderer="antialias: false; alpha: false"
     >
       <!-- <a-camera
         gps-new-camera="gpsMinDistance: 2; gpsMaxDistance: 50; debugUIEnabled: false; resolution: 640x480 updatePositionInterval: 1000"
@@ -45,7 +45,6 @@
 
       <a-image
         src="assets_new/Aliviadero.jpg"
-        look-at="[gps-camera]"
         width="6"
         height="2"
         scale="3.9 3.9 3"
