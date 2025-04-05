@@ -33,14 +33,14 @@
       renderer="antialias: true; alpha: true"
     > -->
     <a-scene
-      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: true"
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true"
       renderer="antialias: true; alpha: true"
     >
       <!-- <a-camera
         gps-new-camera="gpsMinDistance: 2; gpsMaxDistance: 50; debugUIEnabled: false; resolution: 640x480 updatePositionInterval: 1000"
       ></a-camera> -->
       <a-camera
-        gps-new-camera="gpsMinDistance: 0 resolution: 640x480 updatePositionInterval: 1000"
+        gps-new-camera="gpsMinDistance: 0; resolution: 640x480; updatePositionInterval: 1000; visible: false"
       ></a-camera>
 
       <a-image
@@ -48,7 +48,7 @@
         width="6"
         height="2"
         scale="3.9 3.9 3"
-        position="0 2 0"
+        position="0 2 -5"
         gps-new-entity-place="latitude: 39.736724; longitude: -0.8290517;"
       ></a-image>
 
@@ -58,7 +58,7 @@
         width="6"
         height="2"
         scale="3.9 3.9 3"
-        position="0 2 0"
+        position="0 2 -5"
         gps-new-entity-place="latitude: 38.869715; longitude: -1.093669;"
       ></a-image>
     </a-scene>
