@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Instrucciones AR GPS</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.2/js/bootstrap.bundle.min.js"></script>
+    <style>
+        .logo {
+            width: 100px;
+            height: 50px;
+            background-color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            border-radius: 5px;
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #0d6efd;
+            margin-bottom: 1rem;
+        }
+        .hero-section {
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), url('/api/placeholder/1200/400');
+            background-size: cover;
+            background-position: center;
+            color: white;
+            padding: 6rem 0;
+        }
+        .requirement-card {
+            transition: transform 0.3s ease;
+        }
+        .requirement-card:hover {
+            transform: translateY(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!-- Navbar -->
+    <nav class="navbar navbar-expand-lg navbar-light bg-light">
+        <div class="container">
+            <div class="logo">
+                <img src="images/cropped-escudo.png" alt="Logo" style="width: 100%; height: 100%; object-fit: contain;">
+            </div>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <div class="navbar-nav ms-auto">
+                    <a class="nav-link" href="https://pantano.almansa.es/mapas"><i class="fas fa-home me-2"></i>Inicio</a>
+                    <a class="nav-link" href="https://pantano.almansa.es/mapas/mapa-senderos"><i class="fas fa-map-marked-alt me-2"></i>Senderos</a>
+                    <a class="nav-link" href="https://pantano.almansa.es/mapas/visita_virtual"><i class="fas fa-street-view me-2"></i>Visita Virtual</a>
+                    <a class="nav-link" href="https://pantano.almansa.es/mapas/realidad_aumentada"><i class="fas fa-vr-cardboard me-2"></i>Realidad Aumentada</a>
+                    <a class="nav-link" href="https://pantano.almansa.es/carteleria"><i class="fas fa-images me-2"></i>Cartelería</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero-section text-center">
+        <div class="container">
+            <h1 class="display-4 fw-bold">Experiencia de Realidad Aumentada</h1>
+            <p class="lead">Descubre información histórica y puntos de interés a través de tu cámara</p>
+        </div>
+    </section>
+
+    <!-- Instrucciones Section -->
+    <section id="instrucciones" class="py-5">
+        <div class="container">
+            <h2 class="text-center mb-5">Cómo Usar la Aplicación</h2>
+            <div class="row g-4">
+                <div class="col-md-4">
+                    <div class="card h-100 requirement-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">📱</div>
+                            <h3 class="card-title h5">1. Preparación</h3>
+                            <p class="card-text">Asegúrate de tener activada la ubicación GPS y permitir el acceso a la cámara cuando se solicite.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 requirement-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">🎯</div>
+                            <h3 class="card-title h5">2. Exploración</h3>
+                            <p class="card-text">Apunta con tu dispositivo en diferentes direcciones para descubrir los puntos de interés cercanos.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card h-100 requirement-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">ℹ️</div>
+                            <h3 class="card-title h5">3. Interacción</h3>
+                            <p class="card-text">Los paneles de información aparecerán automáticamente cuando estés mirando en la dirección correcta.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Requisitos Section -->
+    <section id="requisitos" class="py-5 bg-light">
+        <div class="container">
+            <h2 class="text-center mb-5">Requisitos Técnicos</h2>
+            <div class="row g-4">
+                <div class="col-md-3">
+                    <div class="card h-100 requirement-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">📱</div>
+                            <h3 class="card-title h5">Dispositivo Móvil</h3>
+                            <p class="card-text">Smartphone o tablet con giroscopio y GPS integrado</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 requirement-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">🌐</div>
+                            <h3 class="card-title h5">Navegador</h3>
+                            <p class="card-text">Navegador web moderno compatible con WebAR</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 requirement-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">📍</div>
+                            <h3 class="card-title h5">GPS</h3>
+                            <p class="card-text">Ubicación GPS activada y permiso concedido</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-3">
+                    <div class="card h-100 requirement-card">
+                        <div class="card-body text-center">
+                            <div class="feature-icon">📹</div>
+                            <h3 class="card-title h5">Cámara</h3>
+                            <p class="card-text">Acceso permitido a la cámara del dispositivo</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Call to Action -->
+    <section id="iniciar" class="py-5">
+        <div class="container text-center">
+            <h2 class="mb-4">¿Listo para comenzar?</h2>
+            <p class="lead mb-4">Asegúrate de cumplir con todos los requisitos antes de iniciar la experiencia AR</p>
+            <a href="ar.html" class="btn btn-primary btn-lg">Iniciar Experiencia AR</a>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="mt-5 py-4 bg-light">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-1"></div>
+                <div class="col-10 text-center">
+                    <img src="images/oficial800.jpg" alt="Logo oficial" class="img-fluid" style="width: 100%;">
+                    <p class="mt-3 text-dark">&copy; 2025 Rutas Pantano Almansa. Todos los derechos reservados.</p>
+                </div>
+                <div class="col-1"></div>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
