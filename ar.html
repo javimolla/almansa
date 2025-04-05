@@ -8,14 +8,13 @@
 </head>
 <body>
     <a-scene vr-mode-ui='enabled: true' arjs='sourceType: webcam; videoTexture: true; debugUIEnabled: true' renderer='antialias: true; alpha: true'>
-        <a-camera gps-new-camera='gpsMinDistance: 5'></a-camera>
+        <a-camera gps-new-camera='gpsMinDistance: 0.5'></a-camera>
         <a-image
             src="assets_new/Aliviadero.jpg"
-            look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
             position="0 2 0"
-            gps-new-entity-place="latitude: 39.7368307; longitude: -0.8287478;"
+            gps-new-entity-place="latitude: 39.736724; longitude: -0.8290517;"
         ></a-image>
     </a-scene>
 </body>
