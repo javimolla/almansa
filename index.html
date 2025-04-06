@@ -8,7 +8,7 @@
       content="black-translucent"
     />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://aframe.io/releases/1.7.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js"></script>
     <script>
@@ -36,6 +36,11 @@
       arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: true"
       renderer="antialias: false; alpha: false"
     >
+    <a-assets>
+      <img id="aliviadero" src="assets_new/Aliviadero.jpg" crossorigin="anonymous">
+      <img id="presa" src="assets_new/Presa.jpg" crossorigin="anonymous">
+    </a-assets>
+
       <!-- <a-camera
         gps-new-camera="gpsMinDistance: 2; gpsMaxDistance: 50; debugUIEnabled: false; resolution: 640x480 updatePositionInterval: 1000"
       ></a-camera> -->
@@ -44,8 +49,8 @@
       ></a-camera>
 
       <a-image
-        src="assets_new/Aliviadero.jpg"
-        look-at="[gps-camera]"
+        src="#aliviadero"
+        look-at="[gps-new-camera]"
         width="6"
         height="2"
         scale="3.9 3.9 3"
@@ -54,13 +59,29 @@
       ></a-image>
 
       <a-image
-        src="assets_new/Presa.jpg"
-        look-at="[gps-camera]"
+        src="#presa"
         width="6"
         height="2"
         scale="3.9 3.9 3"
         position="0 2 -5"
         gps-new-entity-place="latitude: 38.869715; longitude: -1.093669;"
+      ></a-image>
+      <a-image
+        src="#aliviadero"
+        width="6"
+        height="2"
+        scale="3.9 3.9 3"
+        position="0 2 -5"
+        gps-new-entity-place="latitude: 38.869115; longitude: -1.093269;"
+      ></a-image>
+      <a-image
+        src="#presa"
+        look-at="[gps-new-camera]"
+        width="6"
+        height="2"
+        scale="3.9 3.9 3"
+        position="0 2 -5"
+        gps-new-entity-place="latitude: 38.868715; longitude: -1.094069;"
       ></a-image>
     </a-scene>
   </body>
