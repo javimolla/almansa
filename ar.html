@@ -1,72 +1,5 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Pantano de Almansa. Realidad Aumentada.</title>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.2/three.js/build/ar-threex-location-only.js"></script>
-    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.2/aframe/build/aframe-ar.js"></script>
-    <script>
-      if (navigator.permissions) {
-        navigator.permissions
-          .query({ name: "geolocation" })
-          .then(function (result) {
-            if (result.state === "denied") {
-              alert(
-                "Permiso de ubicación denegado. Asegúrate de permitir acceso a la ubicación."
-              );
-            }
-          });
-      }
-    </script>
-  </head>
-  <body style="margin: 0; overflow: hidden">
-    <!-- <a-scene
-      vr-mode-ui="enabled: true"
-      embedded
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true"
-      renderer="antialias: true; alpha: true"
-    > -->
-    <a-scene
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
-      renderer="antialias: true; alpha: true"
-    >
-      <!-- <a-camera
-        gps-new-camera="gpsMinDistance: 2; gpsMaxDistance: 50; debugUIEnabled: false; resolution: 640x480 updatePositionInterval: 1000"
-      ></a-camera> -->
-      <a-camera
-        gps-new-camera="gpsMinDistance: 2; resolution: 640x480; updatePositionInterval: 2000; visible: false"
-      ></a-camera>
-
-      <a-image
-        src="assets_new/Aliviadero.jpg"
-        width="6"
-        height="2"
-        scale="3.9 3.9 3"
-        position="0 2 -5"
-        look-at="[gps-new-camera]"
-        gps-new-entity-place="latitude: 39.497692; longitude: -0.354994;"
-      ></a-image>
-
-      <a-image
-        src="assets_new/Presa.jpg"
-        width="6"
-        height="2"
-        scale="3.9 3.9 3"
-        position="0 2 -5"
-        gps-new-entity-place="latitude: 38.869715; longitude: -1.093669;"
-      ></a-image>
-    </a-scene>
-  </body>
-</html>
-
-<!-- <!DOCTYPE html>
-<html>
 <head>
     <title>Pantano de Almansa. Realidad Aumentada.</title>
     <script type='text/javascript' src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
@@ -81,15 +14,15 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
-            gps-new-entity-place="latitude: 39.736769; longitude: -0.8293557;"
+            position="0 2 0"
+            gps-new-entity-place="latitude: 39.497692; longitude: -0.354994;"
         ></a-image>
         <a-image
             src="assets_new/Presa.jpg"
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.874612; longitude: -1.155829;"
         ></a-image>
         <a-image
@@ -97,7 +30,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.874511; longitude: -1.156105;"
         ></a-image>
         <a-image
@@ -105,7 +38,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.873833; longitude: -1.152819;"
         ></a-image>
         <a-image
@@ -113,7 +46,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.875194; longitude: -1.157192;"
         ></a-image>
         <a-image
@@ -121,7 +54,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.875406; longitude: -1.157219;"
         ></a-image>
         <a-image
@@ -129,7 +62,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.872526; longitude: -1.161381;"
         ></a-image>
         <a-image
@@ -137,7 +70,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.871612; longitude: -1.160731;"
         ></a-image>
         <a-image
@@ -145,7 +78,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.873017; longitude: -1.155993;"
         ></a-image>
         <a-image
@@ -153,7 +86,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.872739; longitude: -1.167959;"
         ></a-image>
         <a-image
@@ -161,7 +94,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.870481; longitude: -1.168772;"
         ></a-image>
         <a-image
@@ -169,7 +102,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.869687; longitude: -1.093705;"
         ></a-image>
         <a-image
@@ -177,7 +110,7 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.869715; longitude: -1.093669;"
         ></a-image>
         <a-image
@@ -185,9 +118,9 @@
             look-at="[gps-camera]"
             width="6" height="2"
             scale="3.9 3.9 3"
-            position="0 2 -5"
+            position="0 2 0"
             gps-new-entity-place="latitude: 38.869726; longitude: -1.093580;"
         ></a-image>
     </a-scene>
 </body>
-</html> -->
+</html>

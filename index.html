@@ -1,45 +1,17 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <title>Pantano de Almansa. Realidad Aumentada.</title>
-  <meta name="apple-mobile-web-app-capable" content="yes" />
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.2/three.js/build/ar-threex-location-only.min.js"></script>
-  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.2/aframe/build/aframe-ar.min.js"></script>
-  
-  <style>
-    .a-enter-ar {
-      position: absolute;
-      bottom: 20px;
-      right: 20px;
-      z-index: 999;
-    }
-    
-    #loading-message {
-      position: absolute;
-      top: 50%;
-      left: 50%;
-      transform: translate(-50%, -50%);
-      background-color: rgba(0, 0, 0, 0.7);
-      color: white;
-      padding: 15px;
-      border-radius: 5px;
-      font-family: Arial, sans-serif;
-      z-index: 9999;
-    }
-    
-    .hidden {
-      display: none;
-    }
-  </style>
-  
-  <script>
-    // Verificar permisos de ubicación
-    document.addEventListener('DOMContentLoaded', function() {
-      const loadingMessage = document.getElementById('loading-message');
-      
+  <head>
+    <title>Pantano de Almansa. Realidad Aumentada.</title>
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta
+      name="apple-mobile-web-app-status-bar-style"
+      content="black-translucent"
+    />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js"></script>
+    <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js"></script>
+    <script>
       if (navigator.permissions) {
         navigator.permissions
           .query({ name: "geolocation" })
@@ -48,90 +20,68 @@
               alert(
                 "Permiso de ubicación denegado. Asegúrate de permitir acceso a la ubicación."
               );
-            } else if (result.state === "granted") {
-              // Ya tenemos permiso
-              initGeolocation();
-            } else {
-              // Solicitar explícitamente
-              navigator.geolocation.getCurrentPosition(
-                function(position) {
-                  initGeolocation();
-                },
-                function(error) {
-                  alert("Error al obtener la ubicación: " + error.message);
-                }
-              );
             }
           });
-      } else {
-        // Navegadores que no soportan navigator.permissions
-        navigator.geolocation.getCurrentPosition(
-          function(position) {
-            initGeolocation();
-          },
-          function(error) {
-            alert("Error al obtener la ubicación: " + error.message);
-          }
-        );
       }
-      
-      function initGeolocation() {
-        loadingMessage.textContent = "Ubicación obtenida. Iniciando AR...";
-        setTimeout(function() {
-          loadingMessage.classList.add('hidden');
-        }, 2000);
-      }
-      
-      // Verificar si las imágenes están cargadas correctamente
-      document.querySelector('a-scene').addEventListener('loaded', function() {
-        const images = document.querySelectorAll('a-image');
-        images.forEach(img => {
-          img.addEventListener('error', function() {
-            console.error('Error al cargar la imagen:', img.getAttribute('src'));
-          });
-        });
-      });
-    });
-  </script>
-</head>
-<body style="margin: 0; overflow: hidden">
-  <div id="loading-message">Obteniendo ubicación...</div>
-  
-  <a-scene
-    vr-mode-ui="enabled: false"
-    embedded
-    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false"
-    renderer="antialias: true; alpha: true"
-  >
-    <!-- Precargar recursos -->
-    <a-assets>
-      <img id="aliviadero" src="assets_new/Aliviadero.jpg" crossorigin="anonymous">
-      <img id="presa" src="assets_new/Presa.jpg" crossorigin="anonymous">
-    </a-assets>
-    
-    <a-camera
-      gps-new-camera="gpsMinDistance: 5; gpsTimeInterval: 1000; positionMinAccuracy: 100;"
-    ></a-camera>
-    
-    <a-image
-      src="#aliviadero"
-      width="6"
-      height="2"
-      scale="3.9 3.9 3"
-      look-at="[gps-new-camera]"
-      position="0 2 -5"
-      gps-new-entity-place="latitude: 39.497692; longitude: -0.354994;"
-    ></a-image>
-    
-    <a-image
-      src="#presa"
-      width="6"
-      height="2"
-      scale="3.9 3.9 3"
-      look-at="[gps-new-camera]"
-      position="0 2 -5"
-      gps-new-entity-place="latitude: 38.869715; longitude: -1.093669;"
-    ></a-image>
-  </a-scene>
-</body>
+    </script>
+  </head>
+  <body style="margin: 0; overflow: hidden">
+    <!-- <a-scene
+      vr-mode-ui="enabled: true"
+      embedded
+      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true"
+      renderer="antialias: true; alpha: true"
+    > -->
+    <a-scene
+      arjs="sourceType: webcam; videoTexture: false; debugUIEnabled: true"
+      renderer="antialias: false; alpha: false"
+    >
+      <!-- <a-camera
+        gps-new-camera="gpsMinDistance: 2; gpsMaxDistance: 50; debugUIEnabled: false; resolution: 640x480 updatePositionInterval: 1000"
+      ></a-camera> -->
+      <a-camera
+        gps-new-camera="gpsMinDistance: 0; resolution: 640x480; updatePositionInterval: 1000; visible: false"
+      ></a-camera>
+
+      <a-assets>
+        <img id="aliviadero" src="assets_new/Aliviadero.jpg" crossorigin="anonymous">
+      </a-assets>
+
+      <a-image
+        src="assets_new/Aliviadero.jpg"
+        width="6"
+        height="2"
+        scale="3.9 3.9 3"
+        position="0 2 -5"
+        gps-new-entity-place="latitude: 39.497692; longitude: -0.354994;"
+      ></a-image>
+      <a-image
+        src="#aliviadero"
+        width="6"
+        height="2"
+        scale="3.9 3.9 3"
+        position="0 2 -5"
+        gps-new-entity-place="latitude: 39.497392; longitude: -0.354594;"
+      ></a-image>
+
+      <a-image
+        src="#presa"
+        width="6"
+        height="2"
+        scale="3.9 3.9 3"
+        position="0 2 -5"
+        look-at="[gps-camera]"
+        gps-new-entity-place="latitude: 39.496992; longitude: -0.354194;"
+      ></a-image>
+      <a-image
+        src="assets_new/Presa.jpg"
+        width="6"
+        height="2"
+        scale="3.9 3.9 3"
+        position="0 2 -5"
+        look-at="[gps-camera]"
+        gps-new-entity-place="latitude: 39.496962; longitude: -0.353794;"
+      ></a-image>
+    </a-scene>
+  </body>
 </html>
