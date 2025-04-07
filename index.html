@@ -12,17 +12,7 @@
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/three.js/build/ar-threex-location-only.js"></script>
     <script src="https://raw.githack.com/AR-js-org/AR.js/3.4.5/aframe/build/aframe-ar.js"></script>
     <script>
-      if (navigator.permissions) {
-        navigator.permissions
-          .query({ name: "geolocation" })
-          .then(function (result) {
-            if (result.state === "denied") {
-              alert(
-                "v1 Permiso de ubicación denegado. Asegúrate de permitir acceso a la ubicación."
-              );
-            }
-          });
-      }
+      alert("v1 Asegúrate de permitir acceso a la ubicación.");
     </script>
   </head>
   <body style="margin: 0; overflow: hidden">
@@ -44,8 +34,12 @@
       ></a-camera>
 
       <a-assets>
-        <img id="aliviadero" src="assets_new/Aliviadero.jpg" crossorigin="anonymous">
-        <img id="presa" src="assets_new/Presa.jpg" crossorigin="anonymous">
+        <img
+          id="aliviadero"
+          src="assets_new/Aliviadero.jpg"
+          crossorigin="anonymous"
+        />
+        <img id="presa" src="assets_new/Presa.jpg" crossorigin="anonymous" />
       </a-assets>
 
       <a-image
