@@ -1,84 +1,194 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <title>Pantano de Almansa. Realidad Aumentada.</title>
-    <meta name="apple-mobile-web-app-capable" content="yes" />
-    <meta
-      name="apple-mobile-web-app-status-bar-style"
-      content="black-translucent"
-    />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.5/three.js/build/ar-threex-location-only.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/ar.js@3.4.5/aframe/build/aframe-ar.min.js"></script>
-    <script>
-      alert("v2 Asegúrate de permitir acceso a la ubicación.");
-    </script>
-  </head>
-  <body style="margin: 0; overflow: hidden">
-    <!-- <a-scene
-      vr-mode-ui="enabled: true"
-      embedded
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true"
-      renderer="antialias: true; alpha: true"
-    > -->
-    <a-scene
-      arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: true"
-      renderer="antialias: true; alpha: true"
-    >
-      <!-- <a-camera
-        gps-new-camera="gpsMinDistance: 2; gpsMaxDistance: 50; debugUIEnabled: false; resolution: 640x480 updatePositionInterval: 1000"
-      ></a-camera> -->
-      <a-camera
-        gps-new-camera="gpsMinDistance: 1;"
-      ></a-camera>
+<head>
+  <title>Pantano de Almansa. Realidad Aumentada.</title>
+  <meta name="apple-mobile-web-app-capable" content="yes" />
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  
+  <!-- Using CDN links that properly support CORS -->
+  <script src="https://aframe.io/releases/1.3.0/aframe.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/three.js/build/ar-threex-location-only.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/gh/AR-js-org/AR.js@3.4.5/aframe/build/aframe-ar.min.js"></script>
+  
+  <script>
+    // Wait for DOM to load before showing alert
+    document.addEventListener('DOMContentLoaded', function() {
+      setTimeout(function() {
+        alert("Asegúrate de permitir acceso a la ubicación.");
+      }, 1000);
+    });
+    
+    // Handle canvas size limitations
+    AFRAME.registerComponent('auto-resize', {
+      init: function () {
+        const camera = document.querySelector('a-camera');
+        
+        // Adjust video settings to prevent canvas overflow
+        if (camera && camera.components && camera.components['gps-new-camera']) {
+          camera.setAttribute('gps-new-camera', {
+            gpsMinDistance: 1,
+            maxDistance: 30
+          });
+        }
+      }
+    });
+  </script>
+  
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      font-family: Arial, sans-serif;
+    }
+    
+    /* Add loading indicator */
+    .loading {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      color: white;
+      z-index: 9999;
+    }
+    
+    /* Add UI panel for instructions */
+    .info-panel {
+      position: fixed;
+      bottom: 20px;
+      left: 20px;
+      background: rgba(0, 0, 0, 0.5);
+      color: white;
+      padding: 10px;
+      border-radius: 5px;
+      max-width: 80%;
+      z-index: 100;
+    }
+  </style>
+</head>
 
-      <a-assets>
-        <img
-          id="aliviadero"
-          src="assets_new/Aliviadero.jpg"
-          crossorigin="anonymous"
-        />
-        <img id="presa" src="assets_new/Presa.jpg" crossorigin="anonymous" />
-      </a-assets>
+<body>
+  <!-- Loading indicator -->
+  <div class="loading" id="loadingScreen">
+    Cargando experiencia AR... Por favor espere.
+  </div>
+  
+  <!-- Info panel -->
+  <div class="info-panel" id="infoPanel">
+    Muévete alrededor para descubrir puntos de interés en el Pantano de Almansa.
+  </div>
 
+  <a-scene
+    vr-mode-ui="enabled: false"
+    embedded
+    arjs="sourceType: webcam; videoTexture: true; debugUIEnabled: false;"
+    renderer="antialias: true; alpha: true; precision: medium;"
+    auto-resize>
+    
+    <!-- Camera with simplified parameters -->
+    <a-camera
+      gps-new-camera="gpsMinDistance: 1; maxDistance: 30;"
+      position="0 0 0"
+      look-controls="enabled: true">
+    </a-camera>
+    
+    <!-- Use base64 encoded small images or valid CORS-enabled URLs -->
+    <!-- Aliviadero Location 1 -->
+    <a-entity
+      gps-new-entity-place="latitude: 39.497692; longitude: -0.354994;"
+      look-at="[gps-camera]">
       <a-image
-        src="assets_new/Aliviadero.jpg"
+        src="https://raw.githubusercontent.com/javimolla/almansa/master/assets_new/Aliviadero.jpg"
         width="6"
         height="2"
-        scale="3.9 3.9 3"
-        position="0 2 -5"
-        look-at="[gps-camera]"
-        gps-new-entity-place="latitude: 39.497692; longitude: -0.354994;"
-      ></a-image>
+        scale="3 3 3"
+        position="0 2 -5">
+      </a-image>
+      <a-text
+        value="Aliviadero"
+        scale="1 1 1"
+        position="0 3.5 -5"
+        color="white"
+        align="center">
+      </a-text>
+    </a-entity>
+    
+    <!-- Aliviadero Location 2 -->
+    <a-entity
+      gps-new-entity-place="latitude: 39.497392; longitude: -0.354594;"
+      look-at="[gps-camera]">
       <a-image
-        src="#aliviadero"
+        src="https://raw.githubusercontent.com/javimolla/almansa/master/assets_new/Aliviadero.jpg"
         width="6"
         height="2"
-        scale="3.9 3.9 3"
-        position="0 2 -5"
-        look-at="[gps-camera]"
-        gps-new-entity-place="latitude: 39.497392; longitude: -0.354594;"
-      ></a-image>
-
+        scale="3 3 3"
+        position="0 2 -5">
+      </a-image>
+      <a-text
+        value="Aliviadero - Vista 2"
+        scale="1 1 1"
+        position="0 3.5 -5"
+        color="white"
+        align="center">
+      </a-text>
+    </a-entity>
+    
+    <!-- Presa Location 1 -->
+    <a-entity
+      gps-new-entity-place="latitude: 39.496992; longitude: -0.354194;"
+      look-at="[gps-camera]">
       <a-image
-        src="#presa"
+        src="https://raw.githubusercontent.com/javimolla/almansa/master/assets_new/Presa.jpg"
+        width="6"
+        height="2" 
+        scale="3 3 3"
+        position="0 2 -5">
+      </a-image>
+      <a-text
+        value="Presa"
+        scale="1 1 1"
+        position="0 3.5 -5"
+        color="white"
+        align="center">
+      </a-text>
+    </a-entity>
+    
+    <!-- Presa Location 2 -->
+    <a-entity
+      gps-new-entity-place="latitude: 39.496962; longitude: -0.353794;"
+      look-at="[gps-camera]">
+      <a-image
+        src="https://raw.githubusercontent.com/javimolla/almansa/master/assets_new/Presa.jpg"
         width="6"
         height="2"
-        scale="3.9 3.9 3"
-        position="0 2 -5"
-        look-at="[gps-camera]"
-        gps-new-entity-place="latitude: 39.496992; longitude: -0.354194;"
-      ></a-image>
-      <a-image
-        src="assets_new/Presa.jpg"
-        width="6"
-        height="2"
-        scale="3.9 3.9 3"
-        position="0 2 -5"
-        look-at="[gps-camera]"
-        gps-new-entity-place="latitude: 39.496962; longitude: -0.353794;"
-      ></a-image>
-    </a-scene>
-  </body>
+        scale="3 3 3"
+        position="0 2 -5">
+      </a-image>
+      <a-text
+        value="Presa - Vista 2"
+        scale="1 1 1"
+        position="0 3.5 -5"
+        color="white"
+        align="center">
+      </a-text>
+    </a-entity>
+  </a-scene>
+  
+  <script>
+    // Hide loading screen when scene is loaded
+    document.querySelector('a-scene').addEventListener('loaded', function () {
+      document.getElementById('loadingScreen').style.display = 'none';
+      
+      // Hide info panel after 10 seconds
+      setTimeout(function() {
+        document.getElementById('infoPanel').style.display = 'none';
+      }, 10000);
+    });
+  </script>
+</body>
 </html>
