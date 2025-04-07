@@ -40,11 +40,12 @@
         gps-new-camera="gpsMinDistance: 2; gpsMaxDistance: 50; debugUIEnabled: false; resolution: 640x480 updatePositionInterval: 1000"
       ></a-camera> -->
       <a-camera
-        gps-new-camera="gpsMinDistance: 0; resolution: 640x480; updatePositionInterval: 1000; visible: false"
+        gps-new-camera="gpsMinDistance: 1; resolution: 640x480; updatePositionInterval: 2000; visible: true"
       ></a-camera>
 
       <a-assets>
         <img id="aliviadero" src="assets_new/Aliviadero.jpg" crossorigin="anonymous">
+        <img id="presa" src="assets_new/Presa.jpg" crossorigin="anonymous">
       </a-assets>
 
       <a-image
@@ -53,6 +54,7 @@
         height="2"
         scale="3.9 3.9 3"
         position="0 2 -5"
+        look-at="[gps-camera]"
         gps-new-entity-place="latitude: 39.497692; longitude: -0.354994;"
       ></a-image>
       <a-image
@@ -61,6 +63,7 @@
         height="2"
         scale="3.9 3.9 3"
         position="0 2 -5"
+        look-at="[gps-camera]"
         gps-new-entity-place="latitude: 39.497392; longitude: -0.354594;"
       ></a-image>
 
